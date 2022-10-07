@@ -24,7 +24,7 @@ Deliverables:
 
 [Front-End](https://hola-mundo-polygon-y-elgraph-next-app.vercel.app/)
 
-# 🤖 Tech Stack and Test Network Info:
+# 🤖 Tech Stack and Chain Info:
 
 #### Tech Stack: 
  - Javascript
@@ -38,7 +38,7 @@ Deliverables:
  - WAGMI
  - Hardhat
  - Ethers.js
-#### Test Network for Polygon: 
+#### Chain: 
  - Polygon Mumbai: https://mumbai.polygonscan.com/
 #### Other Characteristics: 
  - Monorepo
@@ -60,6 +60,7 @@ npm -v
 yarn -v
 git --version
 ```
+> If any don't return back the version info then you must install those to ensure your machine meets the prerequisites.
 
 #### Fork and clone this project
 * First, fork this project by clicking the `Fork` button in the upper right-hand corner of the repo page.
