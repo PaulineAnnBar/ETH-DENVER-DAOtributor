@@ -16,6 +16,8 @@ Learn how to do the following:
 
 Deliverables: 
 
+[Workshop Presentation Slides](https://www.canva.com/design/DAFNXA-bFlI/77baH3l_VJ_ZlTplVKVX8w/view?website#2:start-building-in-web3)
+
 [Subgraph](https://thegraph.com/hosted-service/subgraph/dayana0425/holamundo)
 
 [Smart Contract](https://mumbai.polygonscan.com/address/0xb528596e54d3fcd239cee4e09b55d986ea0a2c17)
