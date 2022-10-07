@@ -144,10 +144,9 @@ yarn dev
 
 ---
 
-# ❓ Need Help?
+# ❓ Need Help or Have Questions?
 * Message me on twt or telegram: @hello-dayana
-OR
-* Open a Github Issue
+* OR: Open a Github Issue
 
 ---
 
