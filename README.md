@@ -65,21 +65,21 @@ git --version
 * Second, open your terminal and run the following command with your github username.
   
 ```bash
-git clone https://github.com/<YOUR-USERNAME>/hola-mundo-polygon-y-elgraph
+git clone https://github.com/<YOUR-USERNAME>/hello-world-polygon-and-thegraph
 ```
 #### Install all project dependencies
 
 * Inside the root directory run `yarn install`
 
 ```bash
-cd hola-mundo-polygon-y-elgraph
+cd hello-world-polygon-and-thegraph
 yarn install
 ```
 ---
 
 # 🛠 Environment Variables & Wallet Setup
 
-#### Create a Dev Wallet with Metamask, an Alchemy Account, a Web3Storage Account and a PolygonScan Account
+#### Create a Dev Wallet, a Alchemy, Web3Storage and PolygonScan Account
 * [Metamask](https://metamask.io/) 
   * IMPORTANT: It's recommended to create a wallet for development purposes only, avoid using your regular wallet!
   * Save your private key(s) & seed phrase (mnemonic) in your notes.
@@ -94,9 +94,9 @@ yarn install
   * Save your API key in your notes.
   
 > **Why do we need these API keys?**
-> An API key is a unique combination of letters & numbers that authorizes our project to make requests to the service we want to use such as Alchemy, PolygonScan, and Web3Storage! Essentially, it's a key to unlock access. ✨
+> An API key is a unique combination of letters & numbers that authorizes our project to make requests to the service we want to use such as Alchemy, Polygonscan, and Web3Storage! It's a key for unlocking access. ✨
 
-#### Add the Test Networks for Polygon Mumbai in Metamask:
+#### Add the Polygon Mumbai Test Network to your Metamask:
 * How to add Polygon Mumbai Testnet: https://docs.polygon.technology/docs/develop/metamask/config-polygon-on-metamask/
 
 > **What's a <i>Test Netowork</i>?**
@@ -105,7 +105,7 @@ yarn install
 #### Fund Your Account(s) with fake MATIC:
 * [Polygon Faucet (Mumbai Network)](https://faucet.polygon.technology/)
 
-> **What's a<i>faucet?</i>?**
+> **What's a <i>faucet?</i>?**
 > A faucet is a place where you can request test money to test your DApp. There are limits on how much you can recieve on a daily basis.
 
 #### Set Your Environment Variables:
@@ -115,13 +115,12 @@ yarn install
 cd packages/hardhat 
 # Copy the contents of .env.example to .env.local
 cp .env.example .env.local
-
-# Navigate inside the 'next-app' folder
-cd packages/next-app
+# Then Navigate inside the 'next-app' folder
+cd ../next-app
 # Copy the contents of .env.example to .env.local
 cp .env.example .env.local
 ```
-* Fill out the variables inside `.env.local` using your keys, urls, and seed phrase you saved.
+* Fill out the variables inside `.env.local` using your keys, urls, and seed phrase you saved during the earlier steps.
 
 > **Why do we need to set environment variables?**
 > In our .env.local file is where we will store the API keys, urls, and seed phrase that our DApp will use. It's good practice not to expose these values in our code and store them in a file that will be hidden. That way, when we push to GitHub, our Accounts with fake money won't get drained. (Yes, they drain accounts on Testnet)
