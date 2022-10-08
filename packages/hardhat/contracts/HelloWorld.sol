@@ -84,7 +84,7 @@ contract HelloWorld {
         // Retrieve the existing Greeting from our storage with the greetingId
         Greeting storage greeting = idToGreeting[greetingId];
         // Require that the function caller (msg.sender) is not the owner of the greeting
-        require(msg.sender != GreetingCard.greetingOwner, "You cannot greet yourself.");
+        require(msg.sender != greeting.greetingOwner, "You cannot greet yourself.");
         // Update Greeting
         greeting.recieved += 1;
         // Emit event that announces the greeting associated with the greetingId recieved a new greeting from msg.sender
