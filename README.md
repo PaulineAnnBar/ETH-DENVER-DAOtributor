@@ -106,9 +106,10 @@ yarn install
 > Using Polygon Mainnet costs real money, but there exists Test Networks or 'Testnets' such as Polygon Mumbai that developers use to test their smart contracts and it costs fake money (test money). All blockchains have their own testnets.
 
 #### Fund Your Account(s) with fake MATIC:
-* [Polygon Faucet (Mumbai Network)](https://faucet.polygon.technology/)
+* [Polygon 
+(Mumbai Network)](https://faucet.polygon.technology/)
 
-> **What's a <i>faucet?</i>?**
+> **What's a <i>Faucet</i>?**
 > A faucet is a place where you can request test money to test your DApp. There are limits on how much you can recieve on a daily basis.
 
 #### Set Your Environment Variables:
