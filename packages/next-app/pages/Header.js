@@ -3,7 +3,7 @@ import Head from "next/head";
 function Header() {
   return (
     <Head>
-      <title>Hola Mundo</title>
+      <title>Hello World</title>
       <meta
         name="description"
         content="A starter project to quickly set up your DApp build on Polygon and with The Graph!🚀"

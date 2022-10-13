@@ -51,7 +51,11 @@
   },
   {
     "inputs": [
-      { "internalType": "string", "name": "greetingDataCID", "type": "string" }
+      {
+        "internalType": "string",
+        "name": "greetingDataCID",
+        "type": "string"
+      }
     ],
     "name": "createNewGreeting",
     "outputs": [],
@@ -59,21 +63,51 @@
     "type": "function"
   },
   {
-    "inputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
     "name": "idToGreeting",
     "outputs": [
-      { "internalType": "bytes32", "name": "greetingId", "type": "bytes32" },
-      { "internalType": "string", "name": "greetingDataCID", "type": "string" },
-      { "internalType": "address", "name": "greetingOwner", "type": "address" },
-      { "internalType": "uint256", "name": "timestamp", "type": "uint256" },
-      { "internalType": "uint256", "name": "recieved", "type": "uint256" }
+      {
+        "internalType": "bytes32",
+        "name": "greetingId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "string",
+        "name": "greetingDataCID",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "greetingOwner",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "recieved",
+        "type": "uint256"
+      }
     ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "bytes32", "name": "greetingId", "type": "bytes32" }
+      {
+        "internalType": "bytes32",
+        "name": "greetingId",
+        "type": "bytes32"
+      }
     ],
     "name": "sendGreeting",
     "outputs": [],

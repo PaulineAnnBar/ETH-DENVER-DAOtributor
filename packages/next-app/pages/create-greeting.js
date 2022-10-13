@@ -34,7 +34,7 @@ import {
   import { useContract, useSigner } from 'wagmi';
   // Address + ABI 
   import { contractAddress } from '../utils/contractAddress.js';
-  import contractABI from '../contracts/ABI/HolaMundo.json';
+  import contractABI from '../contracts/ABI/HelloWorld.json';
 
   export default function Form() {
     // Chakura-UI Toast Messages
@@ -123,7 +123,7 @@ import {
           console.log("Saved in IPFS: ", responseJSON.cid);
         }
       } catch (error) {
-        alert("Oops! Something went wrong. Please refresh & try again.");
+        alert("Oops! Something went wrong. Please refresh & try again.", error);
       }
     }
 

@@ -16,10 +16,10 @@ import {
 import CardText from "./CardText.jsx";
 import { useContract, useSigner } from 'wagmi';
 import { contractAddress } from '../../utils/contractAddress.js';
-import contractABI from '../../contracts/ABI/HolaMundo.json';
+import contractABI from '../../contracts/ABI/HelloWorld.json';
 
 
-export default function Card({ greetingID, ownerAddress, country, name, age, message, crypto, imageURL, timestamp, totalRecieved, totalSent }) {
+export default function Card({ greetingID, ownerAddress, country, name, age, message, crypto, imageURL, timestamp, totalRecieved }) {
     // Chakura-UI Toast Messages
     const toast = useToast();
     // Transaction States

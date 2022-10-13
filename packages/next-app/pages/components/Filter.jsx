@@ -15,6 +15,23 @@ import Card from "./Card";
 import countriesJSON from '../../data/countries.json';
 import cryptocurrenciesJSON from '../../data/cryptocurrencies.json';
 
+    const ALL_GREETINGS = gql`
+        query getGreetings {
+            greetings {
+                greetingID
+                ownerAddress
+                country
+                name
+                age
+                message
+                crypto
+                imageURL
+                timestamp
+                totalRecieved
+            }
+        }
+    `;
+
     const PAST_24_HOURS_GREETINGS = gql`
         query getGreetings($yesterdayTimestamp: String) { 
             greetings(where: {timestamp_gt: $yesterdayTimestamp }) {
@@ -210,9 +227,7 @@ import cryptocurrenciesJSON from '../../data/cryptocurrencies.json';
                     message={greeting.message}
                     crypto={greeting.crypto}
                     imageURL={greeting.imageURL}
-                    timestamp={greeting.timestamp}
-                    totalRecieved={greeting.totalRecieved}
-                    totalSent={greeting.totalSent}> 
+                    timestamp={greeting.timestamp}> 
                 </Card>))
             }
             { faveCrypto 
@@ -231,8 +246,7 @@ import cryptocurrenciesJSON from '../../data/cryptocurrencies.json';
                     crypto={greeting.crypto}
                     imageURL={greeting.imageURL}
                     timestamp={greeting.timestamp}
-                    totalRecieved={greeting.totalRecieved}
-                    totalSent={greeting.totalSent}> 
+                    totalRecieved={greeting.totalRecieved}> 
                 </Card>))
             }
             { faveCrypto == "" 
@@ -251,8 +265,7 @@ import cryptocurrenciesJSON from '../../data/cryptocurrencies.json';
                     crypto={greeting.crypto}
                     imageURL={greeting.imageURL}
                     timestamp={greeting.timestamp}
-                    totalRecieved={greeting.totalRecieved}
-                    totalSent={greeting.totalSent}> 
+                    totalRecieved={greeting.totalRecieved}> 
                 </Card>))
             }
             { faveCrypto == "" 
@@ -271,8 +284,7 @@ import cryptocurrenciesJSON from '../../data/cryptocurrencies.json';
                     crypto={greeting.crypto}
                     imageURL={greeting.imageURL}
                     timestamp={greeting.timestamp}
-                    totalRecieved={greeting.totalRecieved}
-                    totalSent={greeting.totalSent}> 
+                    totalRecieved={greeting.totalRecieved}> 
                 </Card>))
             }
             { other == "Ultimas 24 Horas"
@@ -289,8 +301,7 @@ import cryptocurrenciesJSON from '../../data/cryptocurrencies.json';
                     crypto={greeting.crypto}
                     imageURL={greeting.imageURL}
                     timestamp={greeting.timestamp}
-                    totalRecieved={greeting.totalRecieved}
-                    totalSent={greeting.totalSent}> 
+                    totalRecieved={greeting.totalRecieved}> 
                 </Card>))
             }
             { other == "Ordenar Por Saludos Recibidos"
@@ -307,8 +318,7 @@ import cryptocurrenciesJSON from '../../data/cryptocurrencies.json';
                     crypto={greeting.crypto}
                     imageURL={greeting.imageURL}
                     timestamp={greeting.timestamp}
-                    totalRecieved={greeting.totalRecieved}
-                    totalSent={greeting.totalSent}> 
+                    totalRecieved={greeting.totalRecieved}> 
                 </Card>))
             }
         </SimpleGrid>
