@@ -109,7 +109,7 @@ import {
 
       try {
         // Save Form Details In IPFS
-        const response = await fetch("/api/store-greeting", {
+        const response = await fetch("/api/StoreData", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body),
@@ -203,7 +203,7 @@ import {
                         />
                       </InputGroup>
                     </FormControl>
-                    {/* FIELD: EDAD */}
+                    {/* FIELD: EDAD / AGE */}
                     <FormControl isRequired>
                       <FormLabel>Edad</FormLabel>
                       <NumberInput 
@@ -217,7 +217,7 @@ import {
                         </NumberInputStepper>
                     </NumberInput>
                     </FormControl>
-                    {/* FIELD: PAÍS*/}
+                    {/* FIELD: PAÍS / COUNTRY */}
                     <FormControl isRequired>
                       <FormLabel>País</FormLabel>
                         <Select
@@ -228,7 +228,7 @@ import {
                             })}
                         </Select>
                     </FormControl>
-                    {/* FIELD: CRIPTO*/}
+                    {/* FIELD: CRIPTO / CRYPTO */}
                     <FormControl isRequired>
                       <FormLabel>¿Cuál Es Tu Criptomoneda Favorita?</FormLabel>
                       <Select 
@@ -239,7 +239,7 @@ import {
                             })}
                         </Select>
                     </FormControl>
-                    {/* FIELD: MENSAJE */}
+                    {/* FIELD: MENSAJE / MESSAGE */}
                     <FormControl isRequired>
                       <FormLabel>Mensaje</FormLabel>
                       <Textarea

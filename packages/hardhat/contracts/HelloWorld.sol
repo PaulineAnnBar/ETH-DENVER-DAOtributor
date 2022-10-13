@@ -3,9 +3,9 @@ pragma solidity ^0.8.12;
 
 contract HelloWorld {
     /* 
-    Emitting events are necessary for communicating with our subgraph.
+    Emitting events is necessary for communicating with our subgraph.
     When our smart contract emits events during a transaction,
-    our subgraph reacts to handle those events and map them to our defined schemas.
+    our subgraph reacts to handle those events and map them to our defined entities in our Schema.
     */
     event NewGreetingCreated( // Event is emitted everytime the createNewGreeting() function is called
         bytes32 greetingId, // Greeting identifier
@@ -54,7 +54,7 @@ contract HelloWorld {
         // Creating a unique identifier for every new greeting created
         bytes32 greetingId = keccak256(
             abi.encodePacked(
-                msg.sender, // address of the contract caller
+                msg.sender, // address of the function caller
                 address(this), // address of the contract instance
                 timestamp,
                 greetingDataCID

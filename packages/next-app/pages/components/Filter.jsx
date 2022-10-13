@@ -15,149 +15,127 @@ import Card from "./Card";
 import countriesJSON from '../../data/countries.json';
 import cryptocurrenciesJSON from '../../data/cryptocurrencies.json';
 
-  const ALL_GREETINGS = gql`
-      query getGreetings {
-          greetings {
-            greetingID
-            ownerAddress
-            country
-            name
-            age
-            message
-            crypto
-            imageURL
-            timestamp
-            totalRecieved
-          }
+    const PAST_24_HOURS_GREETINGS = gql`
+        query getGreetings($yesterdayTimestamp: String) { 
+            greetings(where: {timestamp_gt: $yesterdayTimestamp }) {
+                greetingID
+                ownerAddress
+                country
+                name
+                age
+                message
+                crypto
+                imageURL
+                timestamp
+                totalRecieved
+            }
         }
-      `;
-  
-  const PAST_24_HOURS_GREETINGS = gql`
-    query getGreetings($yesterdayTimestamp: String) {
-        greetings(where: {timestamp_gt: $yesterdayTimestamp }) {
-            greetingID
-            ownerAddress
-            country
-            name
-            age
-            message
-            crypto
-            imageURL
-            timestamp
-            totalRecieved
-        }
-    }
-  `;
-  
-  const CRYPTO_AND_COUNTRY_GREETINGS = gql`
-    query getGreetings($faveCrypto: String, $personCountry: String) {
-        greetings(where: {crypto: $faveCrypto, country: $personCountry}) {
-            greetingID
-            ownerAddress
-            country
-            name
-            age
-            message
-            crypto
-            imageURL
-            timestamp
-            totalRecieved
-        }
-    }
-  `;
+    `;
 
-const COUNTRY_GREETINGS = gql`
-    query getGreetings($personCountry: String) {
-        greetings(where: {country: $personCountry }) {
-            greetingID
-            ownerAddress
-            country
-            name
-            age
-            message
-            crypto
-            imageURL
-            timestamp
-            totalRecieved
+    const CRYPTO_AND_COUNTRY_GREETINGS = gql`
+        query getGreetings($faveCrypto: String, $personCountry: String) {
+            greetings(where: {crypto: $faveCrypto, country: $personCountry}) {
+                greetingID
+                ownerAddress
+                country
+                name
+                age
+                message
+                crypto
+                imageURL
+                timestamp
+                totalRecieved
+            }
         }
-    }
-`;
+    `;
 
-const CRYPTO_GREETINGS = gql`
-    query getGreetings($faveCrypto: String) {
-        greetings(where: {crypto: $faveCrypto }) {
-            greetingID
-            ownerAddress
-            country
-            name
-            age
-            message
-            crypto
-            imageURL
-            timestamp
-            totalRecieved
+    const COUNTRY_GREETINGS = gql`
+        query getGreetings($personCountry: String) {
+            greetings(where: {country: $personCountry }) {
+                greetingID
+                ownerAddress
+                country
+                name
+                age
+                message
+                crypto
+                imageURL
+                timestamp
+                totalRecieved
+            }
         }
-    }
-`;
+    `;
 
-const SORT_GREETINGS = gql`
-    query getGreetings {
-        greetings(orderBy: totalRecieved orderDirection: desc) {
-            greetingID
-            ownerAddress
-            country
-            name
-            age
-            message
-            crypto
-            imageURL
-            timestamp
-            totalRecieved
+    const CRYPTO_GREETINGS = gql`
+        query getGreetings($faveCrypto: String) {
+            greetings(where: {crypto: $faveCrypto }) {
+                greetingID
+                ownerAddress
+                country
+                name
+                age
+                message
+                crypto
+                imageURL
+                timestamp
+                totalRecieved
+            }
         }
-    }
-`;
+    `;
+
+    const SORT_GREETINGS = gql`
+        query getGreetings {
+            greetings(orderBy: totalRecieved orderDirection: desc) {
+                greetingID
+                ownerAddress
+                country
+                name
+                age
+                message
+                crypto
+                imageURL
+                timestamp
+                totalRecieved
+            }
+        }
+    `;
 
   
   function Filter() {
     const [isLargerThanLG] = useMediaQuery('(min-width: 62em)');
-    const yesterdayInSecs = Math.floor((new Date().getTime() / 1000) - 86400); // timestamps in solidity are in seconds
-    const [yesterdayTimestamp, setYesturdayTimestamp] = useState(yesterdayInSecs.toString());
+    const yesterdayInSecs = Math.floor((new Date().getTime() / 1000) - 86400); // the timestamps recorded in our solidity contract are in seconds, we convert them to miliseconds here to be compatible with the Date/Time library
+    const [yesterdayTimestamp] = useState(yesterdayInSecs.toString());
     const [personCountry, setCountry] = useState("");
     const [faveCrypto, setCrypto] = useState("");
-    const [timeSelected, setTime] = useState("");
+    const [other, setOther] = useState("");
 
     const cryptoAndCountryQuery = useQuery(CRYPTO_AND_COUNTRY_GREETINGS, {
-        variables: { 
+        variables: {
             faveCrypto,
             personCountry
         }
     });
-    
     const cryptoQuery = useQuery(CRYPTO_GREETINGS, {
         variables: { 
             faveCrypto
         }
     });
-
     const countryQuery = useQuery(COUNTRY_GREETINGS, {
         variables: { 
             personCountry
         }
     });
-
     const allGreetingsQuery = useQuery(ALL_GREETINGS);
-
     const yesterdayQuery = useQuery(PAST_24_HOURS_GREETINGS, {        
         variables: { 
             yesterdayTimestamp
         }
     })
-
     const sortQuery = useQuery(SORT_GREETINGS);
-    console.log(timeSelected)
+
     return (
       <div>
-        {/* FILTERING OPTIONS */}
+        {/* FILTER OPTIONS */}
         <Flex 
             align="center" 
             justify="center">
@@ -169,7 +147,7 @@ const SORT_GREETINGS = gql`
                 color={useColorModeValue('gray.700', 'whiteAlpha.900')}
                 shadow="base">
                 <Stack direction={ isLargerThanLG ? 'row' : 'column'} spacing={2}>[]
-                {/* FIELD: PAÍS */}
+                {/* FIELD: COUNTRY */}
                     <FormControl>
                     <FormLabel>País</FormLabel>
                     <Select
@@ -183,7 +161,7 @@ const SORT_GREETINGS = gql`
                             })}
                     </Select>
                     </FormControl>
-                    {/* FIELD: CRIPTO */}
+                    {/* FIELD: CRYPTO */}
                     <FormControl>
                     <FormLabel>Criptomoneda Favorita</FormLabel>
                     <Select
@@ -199,10 +177,10 @@ const SORT_GREETINGS = gql`
                     </FormControl>
                     {/* FIELD: OTHER */}
                     <FormControl>
-                    <FormLabel>Tiempo Creado</FormLabel>
+                    <FormLabel>Otro</FormLabel>
                     <Select
                         id={"Other"}
-                        onChange={(e) => setTime(e.target.value)}
+                        onChange={(e) => setOther(e.target.value)}
                         placeholder='Seleccione Una Opción'>
                             <option>
                                 Ultimas 24 Horas
@@ -218,9 +196,9 @@ const SORT_GREETINGS = gql`
         {/* DASHBOARD */}
         <SimpleGrid minChildWidth='300px' spacing='40px'>
             { faveCrypto 
-            && personCountry 
+            && personCountry
+            && other == ""
             && cryptoAndCountryQuery.data 
-            && timeSelected == ""
             && cryptoAndCountryQuery.data.greetings.map((greeting) => (
                 <Card
                     key={greeting.greetingID}
@@ -239,8 +217,8 @@ const SORT_GREETINGS = gql`
             }
             { faveCrypto 
             && personCountry == ""
+            && other == ""
             && cryptoQuery.data 
-            && timeSelected == ""
             && cryptoQuery.data.greetings.map((greeting) => (
                 <Card
                     key={greeting.greetingID}
@@ -258,9 +236,9 @@ const SORT_GREETINGS = gql`
                 </Card>))
             }
             { faveCrypto == "" 
-            && personCountry 
+            && personCountry
+            && other == ""
             && countryQuery.data 
-            && timeSelected == ""
             && countryQuery.data.greetings.map((greeting) => ( 
                 <Card
                     key={greeting.greetingID}
@@ -279,7 +257,7 @@ const SORT_GREETINGS = gql`
             }
             { faveCrypto == "" 
             && personCountry == ""
-            && timeSelected == ""
+            && other == ""
             && allGreetingsQuery.data 
             && allGreetingsQuery.data.greetings.map((greeting) => ( 
                 <Card
@@ -297,7 +275,7 @@ const SORT_GREETINGS = gql`
                     totalSent={greeting.totalSent}> 
                 </Card>))
             }
-            { timeSelected == "Ultimas 24 Horas"
+            { other == "Ultimas 24 Horas"
             && yesterdayQuery.data 
             && yesterdayQuery.data.greetings.map((greeting) => ( 
                 <Card
@@ -315,7 +293,7 @@ const SORT_GREETINGS = gql`
                     totalSent={greeting.totalSent}> 
                 </Card>))
             }
-            { timeSelected == "Ordenar Por Saludos Recibidos"
+            { other == "Ordenar Por Saludos Recibidos"
             && sortQuery.data 
             && sortQuery.data.greetings.map((greeting) => ( 
                 <Card

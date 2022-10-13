@@ -6,7 +6,7 @@ function Header() {
       <title>Hola Mundo</title>
       <meta
         name="description"
-        content="Un proyecto inicial para configurar rápidamente la creación de tu DApp en Polygon y The Graph! 🚀"
+        content="A starter project to quickly set up your DApp build on Polygon and with The Graph!🚀"
       />
       <link rel="icon" href="/HolaMundo-NoText.png" />
       <meta property="og:title" content="Hola Mundo" />

@@ -13,16 +13,17 @@ Learn how to do the following:
 * Use Web3Storage to store images & user data.
 * Create, compile and deploy a Subgraph to The Graph's Hosted Service.
 * Query your Subgraph from your front-end using GraphQL to display blockchain & ipfs data.
+* Learn how search, filter and sort your data.
 
 Deliverables: 
 
 [Workshop Presentation Slides](https://www.canva.com/design/DAFNXA-bFlI/77baH3l_VJ_ZlTplVKVX8w/view?website#2:start-building-in-web3)
 
-[Subgraph](https://thegraph.com/hosted-service/subgraph/dayana0425/holamundo)
+[Subgraph]()
 
-[Smart Contract](https://mumbai.polygonscan.com/address/0xb528596e54d3fcd239cee4e09b55d986ea0a2c17)
+[Smart Contract](https://mumbai.polygonscan.com/address/0xF40c13Ce09fBB16999c4550f92B5233D29167a4e)
 
-[Front-End](https://hola-mundo-polygon-y-elgraph-next-app.vercel.app/)
+[Front-End]()
 
 # 🤖 Tech Stack and Chain Info:
 
@@ -117,17 +118,17 @@ yarn install
 ```bash
 # Navigate inside the 'hardhat' folder
 cd packages/hardhat 
-# Copy the contents of .env.example to .env.local
-cp .env.example .env.local
+# Copy the contents of .env.example to .env
+cp .env.example .env
 # Then Navigate inside the 'next-app' folder
 cd ../next-app
-# Copy the contents of .env.example to .env.local
-cp .env.example .env.local
+# Copy the contents of .env.example to .env
+cp .env.example .env
 ```
-* Fill out the variables inside `.env.local` using your keys, urls, and seed phrase you saved during the earlier steps.
+* Fill out the variables inside `.env` using your keys, urls, and seed phrase you saved during the earlier steps.
 
 > **Why do we need to set environment variables?**
-> In our .env.local file is where we will store the API keys, urls, and seed phrase that our DApp will use. It's good practice not to expose these values in our code and store them in a file that will be hidden. That way, when we push to GitHub, our Accounts with fake money won't get drained. (Yes, they drain accounts on Testnet)
+> In our `.env` file is where we will store the API keys, urls, and seed phrase that our DApp will use. It's good practice not to expose these values in our code and store them in a file that will be hidden. That way, when we push to GitHub, our Accounts with fake money won't get drained. (Yes, they drain accounts on Testnet)
 
 ---
 
@@ -148,7 +149,7 @@ yarn dev
 ---
 
 # ❓ Need Help or Have Questions?
-* Message me on twt or telegram: @hello-dayana
+* Message me on twt or telegram: @hello_dayana
 * OR: Open a Github Issue
 
 ---
@@ -201,7 +202,7 @@ https://www.youtube.com/watch?v=KwYqtbSwnH8
 Canva: For creating pitch deck presentations
 https://www.canva.com/
 </br>
-Miro: For planning out your DApp):
+Miro: For planning out your DApp:
 https://miro.com/
 </br>
 Figma: Wireframes
