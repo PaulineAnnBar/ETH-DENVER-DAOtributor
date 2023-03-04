@@ -36,7 +36,7 @@ import { contractAddress } from "../utils/contractAddress.js";
 import contractABI from "../contracts/ABI/HelloWorld.json";
 
 export default function Form() {
-  // Chakura-UI Toast Messages
+  // Chakra-UI Toast Messages
   const toast = useToast();
 
   // Toast For Every Page Render
@@ -119,7 +119,7 @@ export default function Form() {
         alert("Oops! Something went wrong. Please refresh & try again.");
       } else {
         let responseJSON = await response.json();
-        await createGreeting(responseJSON.cid);
+        await createProposal(responseJSON.cid);
         console.log("Saved in IPFS: ", responseJSON.cid);
       }
     } catch (error) {
@@ -128,13 +128,13 @@ export default function Form() {
   }
 
   // Create Greeting
-  const createGreeting = async (cid) => {
+  const createProposal = async (cid) => {
     try {
       // Reset
       setSuccess(false);
       setLoading(false);
       if (contractOnMumbai) {
-        // Calling smart contract function: createNewGreeting
+        // Calling smart contract function: createNewGreeting // need to change fonction name
         const txn = await contractOnMumbai.createNewGreeting(cid, {
           gasLimit: 900000,
         });
@@ -177,7 +177,7 @@ export default function Form() {
                   md: "5xl",
                 }}
               >
-                Contributor profile
+                DAO PROPOSAL
               </Heading>
               {/* FORM */}
               <Stack
@@ -196,7 +196,7 @@ export default function Form() {
                   <VStack spacing={6}>
                     ][]
                     <FormControl isRequired>
-                      <FormLabel>Name</FormLabel>
+                      <FormLabel>Task Name</FormLabel>
                       <InputGroup>
                         <InputLeftElement>
                           <BsPerson />
@@ -204,13 +204,13 @@ export default function Form() {
                         <Input
                           type="text"
                           name="name"
-                          placeholder="Please enter your name"
+                          placeholder="Please enter a name for the task"
                           onChange={(e) => setName(e.target.value)}
                         />
                       </InputGroup>
                     </FormControl>
                     <FormControl isRequired>
-                      <FormLabel>Skills</FormLabel>
+                      <FormLabel>Skills wanted</FormLabel>
                       <InputGroup>
                         <InputLeftElement>
                           <BsPerson />
@@ -241,7 +241,7 @@ export default function Form() {
                         </NumberInputStepper>
                       </NumberInput>
                     </FormControl>
-                    {/* FIELD: CRIPTO / CRYPTO */}
+                    {/* FIELD:  CRYPTO */}
                     <FormControl isRequired>
                       <FormLabel>
                         Which crypto you wish to be paid with
@@ -257,13 +257,13 @@ export default function Form() {
                         })}
                       </Select>
                     </FormControl>
-                    {/* FIELD: MENSAJE / MESSAGE */}
+                    {/* FIELD:  MESSAGE */}
                     <FormControl isRequired>
                       <FormLabel>Message</FormLabel>
                       <Textarea
                         onChange={(e) => setMessage(e.target.value)}
                         name="Message"
-                        placeholder="Add valuable info for the DAO"
+                        placeholder="Add a description of the task"
                         rows={6}
                         resize="none"
                       />

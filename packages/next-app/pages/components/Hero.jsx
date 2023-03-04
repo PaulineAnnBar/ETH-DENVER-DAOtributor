@@ -72,7 +72,7 @@ function Hero() {
               mb={isLargerThanLG ? "0" : "10"}
               onClick={(e) => {
                 e.preventDefault();
-                window.location.href = "/create-contributorProfile";
+                window.location.href = "/create-proposal";
               }}
             >
               I am a contributor
