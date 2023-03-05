@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   Box,
   Button,
@@ -19,7 +19,6 @@ import {
   Textarea,
   VStack,
   useColorModeValue,
-  useToast,
 } from "@chakra-ui/react";
 import Navbar from "./components/Navbar";
 import Header from "./Header";
@@ -28,17 +27,14 @@ import { BsPerson } from "react-icons/bs";
 // Data
 import cryptocurrenciesJSON from "../data/cryptocurrencies.json";
 // Helper
-import getRandomImage from "../helpers/getRandomImage";
 // Wagmi
-import { useContract, useProvider } from "wagmi";
 // Address + ABI
-import contractABI from "../contracts/DaoContract.json";
 
 export default function Form() {
   // Chakra-UI Toast Messages
-  const toast = useToast();
+  // const toast = useToast();
 
-  // Toast For Every Page Render
+  // // Toast For Every Page Render
   useEffect(() => {
     toast({
       title: "Connect Wallet",
@@ -125,13 +121,13 @@ export default function Form() {
       alert("Oops! Something went wrong. Please refresh & try again.", error);
     }
   }
-  const daoContract = 0x757c0968f4763dd03b0c190d0b6b7146ad07a022;
-  const provider = useProvider();
-  const contract = useContract({
-    address: daoContract,
-    abi: contractABI,
-    signerOrProvider: provider,
-  });
+  // const daoContract = 0x757c0968f4763dd03b0c190d0b6b7146ad07a022;
+  // const provider = useProvider();
+  // const contract = useContract({
+  //   address: daoContract,
+  //   abi: contractABI,
+  //   signerOrProvider: provider,
+  // });
 
   const createTask = async (model) => {
     console.log({ model });

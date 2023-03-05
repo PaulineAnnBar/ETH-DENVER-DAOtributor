@@ -14,7 +14,7 @@ function redirectToNewURL() {
   window.location.href = "https://http://localhost:3000/new-url";
 }
 
-function Hero() {
+function Profile() {
   const [isLargerThanLG] = useMediaQuery("(min-width: 62em)");
   return (
     <div>
@@ -31,15 +31,13 @@ function Hero() {
           w={isLargerThanLG ? "60%" : "full"}
         >
           {/* TITLE */}
-          <Flex justifyContent={"left"} alignItems={"center"}>
+          <Flex justifyContent={"center "} alignItems={"center"}>
             <Heading
               className={
                 "text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl"
               }
               fontSize={["4rem", "3.8rem", "3.5rem", "3.3rem", "3rem"]}
-            >
-              DAOtributor
-            </Heading>
+            ></Heading>
           </Flex>
           {/* DESCRIPTION */}
           <Text mb="5" fontSize={isLargerThanLG ? "lg" : "base"} opacity={0.7}>
@@ -77,6 +75,20 @@ function Hero() {
             >
               I am a contributor
             </Button>
+            <Button
+              w="200px"
+              colorScheme="blue"
+              variant="solid"
+              h="50px"
+              size={isLargerThanLG ? "lg" : "md"}
+              mb={isLargerThanLG ? "0" : "10"}
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = "/profile";
+              }}
+            >
+              to Profile
+            </Button>
           </Stack>
         </Box>
         {/* IMAGE */}
@@ -92,4 +104,4 @@ function Hero() {
   );
 }
 
-export default Hero;
+export default Profile;
