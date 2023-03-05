@@ -14,7 +14,10 @@ export const { chains, provider } = configureChains(
     chain.localhost,
     chain.hardhat,
   ],
-  [alchemyProvider({ alchemyId: process.env.ALCHEMY_ID }), publicProvider()]
+  [
+    alchemyProvider({ apiKey: "CnO8binqsQVaQ8pkeS8vTBdceSRsYC8-" }),
+    publicProvider(),
+  ]
 );
 const { connectors } = getDefaultWallets({
   appName: "Hola Mundo DApp",

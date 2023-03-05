@@ -30,10 +30,9 @@ import cryptocurrenciesJSON from "../data/cryptocurrencies.json";
 // Helper
 import getRandomImage from "../helpers/getRandomImage";
 // Wagmi
-import { useContract, useSigner } from "wagmi";
+import { useContract, useProvider } from "wagmi";
 // Address + ABI
-import { contractAddress } from "../utils/contractAddress.js";
-import contractABI from "../contracts/ABI/HelloWorld.json";
+import contractABI from "../contracts/DaoContract.json";
 
 export default function Form() {
   // Chakra-UI Toast Messages
@@ -63,12 +62,12 @@ export default function Form() {
   const [message, setMessage] = useState("");
 
   // Connect To Contract
-  const signer = useSigner();
-  const contractOnMumbai = useContract({
-    addressOrName: contractAddress,
-    contractInterface: contractABI,
-    signerOrProvider: signer.data,
-  });
+  //const signer = useSigner();
+  // const contractOnMumbai = useContract({
+  //   address: contractAddress,
+  //   abi: contractABI,
+  //   // signerOrProvider: signer.data,
+  // });
 
   // Toasts for Transaction States
   useEffect(() => {
@@ -95,7 +94,7 @@ export default function Form() {
   // Handle Submit
   async function handleSubmit(e) {
     e.preventDefault();
-
+    console.log("hello", handleSubmit);
     const body = {
       name: personName,
       age: personAge,
@@ -126,6 +125,57 @@ export default function Form() {
       alert("Oops! Something went wrong. Please refresh & try again.", error);
     }
   }
+  const daoContract = 0x757c0968f4763dd03b0c190d0b6b7146ad07a022;
+  const provider = useProvider();
+  const contract = useContract({
+    address: daoContract,
+    abi: contractABI,
+    signerOrProvider: provider,
+  });
+
+  const createTask = async (model) => {
+    console.log({ model });
+    // change the params
+    const data = {
+      questId,
+      description: model.description,
+      approxCompletionTime: new Date(model.completion_time),
+      proposer: address,
+      signature: model.signature,
+    };
+    mutate(data, {
+      onSuccess: async (data) => {
+        console.log({ data });
+        const { proposalCID, signature, nonce } = data;
+        await contract?.sendProposal(questId, proposalCID, signature, nonce, {
+          maxPriorityFeePerGas: await provider?.send(
+            "eth_maxPriorityFeePerGas",
+            []
+          ),
+        });
+        toast.success("Proposal Created Successfully");
+        onClose();
+      },
+    });
+  };
+  const { signMessage } = useSignMessage({
+    async onSuccess(data, variables) {
+      console.log(data, variables);
+      console.log({ lancerData: variables });
+      await createTask({ ...variables, signature: data });
+    },
+  });
+  const onSubmit = async (data) => {
+    if (!address) {
+      toast.error("Please connect your wallet!");
+      return;
+    }
+
+    signMessage({
+      ...data,
+      message: lancerSignatureOrProfile.message,
+    });
+  };
 
   // Create Greeting
   const createProposal = async (cid) => {
@@ -276,9 +326,9 @@ export default function Form() {
                       _hover={{
                         bg: "blue.500",
                       }}
-                      onClick={(e) => handleSubmit(e)}
+                      onClick={(e) => onSubmit(e)}
                     >
-                      Create profile
+                      Create proposal
                     </Button>
                   </VStack>
                 </Box>
