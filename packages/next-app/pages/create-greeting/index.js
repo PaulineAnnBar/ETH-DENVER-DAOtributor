@@ -21,19 +21,19 @@ import {
   useColorModeValue,
   useToast,
 } from "@chakra-ui/react";
-import Navbar from "./components/Navbar";
-import Header from "./Header";
+import Navbar from "../components/Navbar";
+import Header from "../Header";
 // Icon
 import { BsPerson } from "react-icons/bs";
 // Data
-import cryptocurrenciesJSON from "../data/cryptocurrencies.json";
+import cryptocurrenciesJSON from "../../data/cryptocurrencies.json";
 // Helper
-import getRandomImage from "../helpers/getRandomImage";
+import getRandomImage from "../../helpers/getRandomImage";
 // Wagmi
 import { useContract, useSigner } from "wagmi";
 // Address + ABI
-import { contractAddress } from "../utils/contractAddress.js";
-import contractABI from "../contracts/ABI/HelloWorld.json";
+import { contractAddress } from "../../utils/contractAddress.js";
+import contractABI from "../../contracts/ABI/HelloWorld.json";
 
 export default function Form() {
   // Chakura-UI Toast Messages
@@ -225,7 +225,7 @@ export default function Form() {
                     </FormControl>
                     {/* FIELD: EDAD / AGE */}
                     <FormControl isRequired>
-                      <FormLabel>Category</FormLabel>
+                      <FormLabel>Link</FormLabel>
                       <NumberInput
                         allowMouseWheel="true"
                         max={110}

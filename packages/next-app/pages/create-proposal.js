@@ -95,7 +95,7 @@ export default function Form() {
   // Handle Submit
   async function handleSubmit(e) {
     e.preventDefault();
-
+    console.log("hello");
     const body = {
       name: personName,
       age: personAge,
@@ -134,7 +134,7 @@ export default function Form() {
       setSuccess(false);
       setLoading(false);
       if (contractOnMumbai) {
-        // Calling smart contract function: createNewGreeting // need to change fonction name
+        // Calling smart contract function: createNewGreeting // need to change fonction name!!!
         const txn = await contractOnMumbai.createNewGreeting(cid, {
           gasLimit: 900000,
         });
@@ -225,7 +225,7 @@ export default function Form() {
                     </FormControl>
                     {/* FIELD: EDAD / AGE */}
                     <FormControl isRequired>
-                      <FormLabel>Category</FormLabel>
+                      <FormLabel>price</FormLabel>
                       <NumberInput
                         allowMouseWheel="true"
                         max={110}

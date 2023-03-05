@@ -1,21 +1,20 @@
-import React from "react";
-import {
-  Heading,
-  Text,
-  Flex,
-  Box,
-  Button,
-  Stack,
-  Img,
-  useMediaQuery,
-} from "@chakra-ui/react";
+import { Heading, Text, Flex, Box, Button, Stack, Img } from "@chakra-ui/react";
 
-function redirectToNewURL() {
-  window.location.href = "https://http://localhost:3000/new-url";
-}
+// function redirectToNewURL() {
+//   window.location.href = "https://http://localhost:3000/new-url";
+// }
 
+const collectibles = function() {};
 function Hero() {
   const [isLargerThanLG] = useMediaQuery("(min-width: 62em)");
+  //   setupSDK();
+  //   const [nfts, setNfts] = useState([]);
+  //   const fetchNfts = async (address, chainId) => {
+  //     const nfts = await NftService.getNfts(address, +chainId);
+  //     console.log(JSON.stringify(nfts));
+  //     setNfts(nfts);
+  //   };
+
   return (
     <div>
       <Flex
